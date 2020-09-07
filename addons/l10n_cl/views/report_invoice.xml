@@ -3,6 +3,17 @@
 
     <!-- this header can be used on any Chilean report -->
     <template id="custom_header">
+
+        <t t-set="report_date" t-value="o.invoice_date"/>
+        <t t-set="report_number" t-value="int(o.l10n_latam_document_number)"/>
+        <t t-set="pre_printed_report" t-value="report_type == 'pdf'"/>
+        <t t-set="report_name" t-value="o.l10n_latam_document_type_id.name"/>
+        <t t-set="header_address" t-value="o.company_id.partner_id"/>
+        <t t-set="is_tax" t-value="o.l10n_latam_document_type_id.code not in ['39', '41', '110', '111', '112', '34']"/>
+        <t t-set="custom_footer">
+            <t t-call="l10n_cl.custom_footer"/>
+        </t>
+
         <div>
             <div class="row">
                 <div name="left-upper-side" class="col-8">
@@ -96,7 +107,7 @@
                 <br/>
                 <strong>Address:</strong>
                 <span t-field="o.partner_id"
-                      t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true, &quot;no_tag_br&quot;: True}"/>
+                      t-options="{'widget': 'contact', 'fields': ['address'], 'no_marker': true, 'no_tag_br': True}"/>
 
                 <strong>Payment Terms:</strong>
                 <span t-esc="o.invoice_payment_term_id.name or ''"/>
@@ -123,15 +134,6 @@
 
         <t t-set="o" position="after">
             <t t-set="custom_header" t-value="'l10n_cl.custom_header'"/>
-            <t t-set="report_date" t-value="o.invoice_date"/>
-            <t t-set="report_number" t-value="int(o.l10n_latam_document_number)"/>
-            <t t-set="pre_printed_report" t-value="report_type == 'pdf'"/>
-            <t t-set="report_name" t-value="o.l10n_latam_document_type_id.name"/>
-            <t t-set="header_address" t-value="o.company_id.partner_id"/>
-            <t t-set="is_tax" t-value="o.l10n_latam_document_type_id.code not in ['39', '41', '110', '111', '112', '34']"/>
-            <t t-set="custom_footer">
-                <t t-call="l10n_cl.custom_footer"/>
-            </t>
         </t>
 
         <!-- remove default partner address -->
@@ -209,15 +211,6 @@
         <!-- custom header and footer -->
         <t t-set="o" position="after">
             <t t-set="custom_header" t-value="'l10n_cl.custom_header'"/>
-            <t t-set="report_date" t-value="o.invoice_date"/>
-            <t t-set="report_number" t-value="int(o.l10n_latam_document_number)"/>
-            <t t-set="pre_printed_report" t-value="report_type == 'pdf'"/>
-            <t t-set="report_name" t-value="o.l10n_latam_document_type_id.name"/>
-            <t t-set="header_address" t-value="o.company_id.partner_id"/>
-            <t t-set="is_tax" t-value="o.l10n_latam_document_type_id.code not in ['39', '41', '110', '111', '112', '34']"/>
-            <t t-set="custom_footer">
-                <t t-call="l10n_cl.custom_footer"/>
-            </t>
         </t>
 
         <!-- remove default partner address -->
