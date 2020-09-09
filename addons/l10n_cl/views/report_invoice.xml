@@ -146,12 +146,7 @@
         </xpath>
 
         <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" position="attributes">
-            <!--<t t-if="is_tax">-->
-                <attribute name="t-value">current_subtotal + line.l10n_latam_price_subtotal</attribute>
-            <!--</t>
-            <t t-if="not is_tax">
-                <attribute name="t-value">current_subtotal + line.price_total</attribute>
-            </t>-->
+            <attribute name="t-value">current_subtotal + line.l10n_latam_price_subtotal</attribute>
         </t>
 
         <span t-field="line.price_subtotal" position="attributes">
@@ -229,12 +224,7 @@
         </xpath>
 
         <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" position="attributes">
-            <!--<t t-if="is_tax">-->
-                <attribute name="t-value">current_subtotal + line.l10n_latam_price_subtotal</attribute>
-            <!--</t>
-            <t t-if="not is_tax">
-                <attribute name="t-value">current_subtotal + line.price_total</attribute>
-            </t>-->
+            <attribute name="t-value">current_subtotal + line.l10n_latam_price_subtotal</attribute>
         </t>
 
         <span t-field="line.price_subtotal" position="attributes">
